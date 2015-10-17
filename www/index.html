@@ -36,7 +36,13 @@
     <p> Geolocation Coordinates: {{main.coordinates.lat}}, {{main.coordinates.long}}</p>
     <ion-slide-box on-slide-changed="slideHasChanged($index)">
         <ion-slide>
-          <div><h1>Current Data Here</h1></div>
+          <div>
+            <p>{{main.showTime}}</p>
+            <p>{{main.currently.temperature}} Degrees F</p>
+            <p>{{main.currently.precipProbability}} % Chance of Rain</p>
+            <p>{{main.currently.windSpeed}} mph</p>
+            <p>{{main.currently.humidity * 100}}% Humidity</p>
+          </div>
         </ion-slide>
         <ion-slide>
           <div class><h1>Hourly Data Here</h1></div>
