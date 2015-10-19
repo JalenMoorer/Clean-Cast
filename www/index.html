@@ -42,10 +42,32 @@
             <p>{{main.currently.precipProbability}} % Chance of Rain</p>
             <p>{{main.currently.windSpeed}} mph</p>
             <p>{{main.currently.humidity * 100}}% Humidity</p>
+            <p>{{main.alert.title}}</p>
           </div>
         </ion-slide>
         <ion-slide>
-          <div class><h1>Hourly Data Here</h1></div>
+          <div ng-repeat="hourly in main.hourly">
+            <div style="border: 1px solid;">
+              <p>{{hourly.time}}
+              <p>{{hourly.summary}}</p>
+              <p>{{hourly.temperature}} Degrees F</p>
+              <p>{{hourly.precipProbability}} % Chance of Rain</p>
+              <p>{{hourly.windSpeed}} mph</p>
+              <p>{{hourly.humidity * 100}} Humidity</p>
+            </div>
+          </div>
+        </ion-slide>
+        <ion-slide>
+          <div ng-repeat="daily in main.daily">
+            <div style="border: 1px solid;">
+              <p>{{daily.time}}
+              <p>{{daily.summary}}</p>
+              <p>{{daily.temperature}} Degrees F</p>
+              <p>{{daily.precipProbability}} % Chance of Rain</p>
+              <p>{{daily.windSpeed}} mph</p>
+              <p>{{daily.humidity * 100}} Humidity</p>
+            </div>
+          </div>
         </ion-slide>
     </ion-slide-box>
   </ion-content>
