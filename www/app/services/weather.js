@@ -7,10 +7,8 @@ angular.module('weatherService', ['ngCordova'])
 	var url = 'https://api.forecast.io/forecast/' + FORECASTIO_KEY + '/';
 
     return {
-        
         getWeather: function(lat, long)  {
             return $http.jsonp(url + lat + ',' + long + "?callback=JSON_CALLBACK");
         }
-
-    }
+    };
 });

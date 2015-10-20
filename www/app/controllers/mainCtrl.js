@@ -14,12 +14,23 @@ angular.module('mainCtrl', ['ionic', 'ngCordova'])
             var currently = data.currently;
             var hourly = data.hourly.data;
             var daily = data.daily.data;
-            var alert = data.alerts[0];
 
             self.currently = currently;
             self.hourly = self.convertHour(hourly);
             self.daily = self.convertTime(daily);
-            self.alert = alert;
+
+            self.getLocation(lat, long);
+
+            //var alert = data.alerts[0];
+            //self.alert = alert;
+            
+        });
+    };
+
+    self.getLocation = function(lat, long) {
+        Geolocation.getCurrentLocation(lat, long).success(function(data) {
+            var location = data.geonames[0];
+            self.location = location;
         });
     };
 
