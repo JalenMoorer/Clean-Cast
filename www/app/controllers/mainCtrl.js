@@ -1,6 +1,6 @@
 angular.module('mainCtrl', ['ionic', 'ngCordova'])
 
-.controller('mainController', function (Geolocation, Weather, Database, $cordovaSQLite, $ionicSlideBoxDelegate, $timeout){
+.controller('mainController', function (Geolocation, Weather, Database, $cordovaSQLite, $ionicSlideBoxDelegate, $ionicScrollDelegate,  $timeout){
 
     var self = this;
     self.processing = true;
@@ -100,8 +100,11 @@ angular.module('mainCtrl', ['ionic', 'ngCordova'])
 
 
     self.slide = function(index) {
+        $ionicScrollDelegate.scrollTop();
         self.current = index;
+        //if(index === 0 ) $ionicScrollDelegate.freezeScroll([y])
         $ionicSlideBoxDelegate.slide(index);
+        $ionicScrollDelegate.resize();
     };
 
     self.getTime();

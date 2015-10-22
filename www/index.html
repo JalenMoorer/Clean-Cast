@@ -40,7 +40,7 @@
   </div>
 
   <div ng-if="!main.processing">
-    <ion-content >
+    <ion-content scroll="false">
     <button class="button" ng-click="main.selectAll()">Select All</button>
     <p>{{main.rows}}
     <div class="button-bar">
@@ -49,9 +49,12 @@
          ng-click="main.slide($index)"
          class="button button-stable">{{ button.name }}</a>
     </div>
-    <ion-slide-box on-slide-changed="main.slide($index)">
+
+
+    <ion-slide-box show-pager="false" on-slide-changed="main.slide($index)">
+
         <ion-slide>
-          <div>
+          <div class="card">
             <p>{{main.showTime}}</p>
             <p>{{main.location.name}}, {{main.location.adminCode1}}</p>
             <p>{{main.currently.temperature}} Degrees F</p>
@@ -61,33 +64,41 @@
             <p>{{main.alert.title}}</p>
           </div>
         </ion-slide>
+
         <ion-slide>
-          <div ng-repeat="hourly in main.hourly">
-            <div style="border: 1px solid;">
-              <p>{{hourly.time}}
-              <p>{{hourly.summary}}</p>
-              <p>{{hourly.temperature}} Degrees F</p>
-              <p>{{hourly.precipProbability}} % Chance of Rain</p>
-              <p>{{hourly.windSpeed}} mph</p>
-              <p>{{hourly.humidity * 100}} Humidity</p>
-            </div>
+        <ion-scroll style="height: 500px">
+          <div class="card" ng-repeat="hourly in main.hourly">
+            <p>{{hourly.time}}
+            <p>{{hourly.summary}}</p>
+            <p>{{hourly.temperature}} Degrees F</p>
+            <p>{{hourly.precipProbability}} % Chance of Rain</p>
+            <p>{{hourly.windSpeed}} mph</p>
+            <p>{{hourly.humidity * 100}} Humidity</p>
           </div>
+        </ion-scroll>
         </ion-slide>
+
         <ion-slide>
-          <div ng-repeat="daily in main.daily">
-            <div style="border: 1px solid;">
-              <p>{{daily.time}}
-              <p>{{daily.summary}}</p>
-              <p>{{daily.temperature}} Degrees F</p>
-              <p>{{daily.precipProbability}} % Chance of Rain</p>
-              <p>{{daily.windSpeed}} mph</p>
-              <p>{{daily.humidity * 100}} Humidity</p>
-            </div>
+        <ion-scroll style="height: 500px">
+          <div class="card" ng-repeat="daily in main.daily">
+            <p>{{daily.time}}
+            <p>{{daily.summary}}</p>
+            <p>{{daily.temperature}} Degrees F</p>
+            <p>{{daily.precipProbability}} % Chance of Rain</p>
+            <p>{{daily.windSpeed}} mph</p>
+            <p>{{daily.humidity * 100}} Humidity</p>
           </div>
+          </ionic-scroll>
         </ion-slide>
+
     </ion-slide-box>
   </div>
-  
+
+  <div class="bar bar-footer">
+    <button class="button button-clear">Left</button>
+    <div class="title">Title</div>
+    <button class="button button-clear">Right</button>
+  </div>
   </ion-content>
   </ion-pane>
   </body>
