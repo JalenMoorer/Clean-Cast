@@ -1,8 +1,9 @@
 angular.module('mainCtrl', ['ionic', 'ngCordova'])
 
-.controller('mainController', function (Geolocation, Weather, $timeout){
+.controller('mainController', function (Geolocation, Weather, Database, $cordovaSQLite, $timeout){
 
     var self = this;
+    self.processing = true;
 
     Geolocation.getCoordinates().then(function(position){
         self.coordinates = {lat: position.coords.latitude, long: position.coords.longitude};
@@ -31,6 +32,8 @@ angular.module('mainCtrl', ['ionic', 'ngCordova'])
         Geolocation.getCurrentLocation(lat, long).success(function(data) {
             var location = data.geonames[0];
             self.location = location;
+
+            self.processing = false;
         });
     };
 
@@ -81,6 +84,11 @@ angular.module('mainCtrl', ['ionic', 'ngCordova'])
 
     self.isMidnight = function(hour) {
         if (hour === 0) return true;
+    };
+
+    self.selectAll = function() {
+        var rows = Database.fetchAll();
+        self.rows = rows;
     };
 
     self.getTime();

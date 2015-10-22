@@ -24,6 +24,7 @@
     <script src="app/controllers/mainCtrl.js"></script>
     <script src="app/services/geolocation.js"></script>
     <script src="app/services/weather.js"></script>
+    <script src="app/services/db.js"></script>
   </head>
   <body ng-app="app" ng-controller="mainController as main" ng-cloak>
 
@@ -32,7 +33,16 @@
     <h1 class="title">Clean-Cast</h1>
   </ion-header-bar>
 
-  <ion-content>
+  <div ng-if="main.processing">
+    <ion-content>
+      <ion-spinner icon="spiral"></ion-spinner>
+    </ion-content>
+  </div>
+
+  <div ng-if="!main.processing">
+    <ion-content >
+    <button class="button" ng-click="main.selectAll()">Select All</button>
+    <p>{{main.rows}}
     <p> Geolocation Coordinates: {{main.coordinates.lat}}, {{main.coordinates.long}}</p>
     <ion-slide-box on-slide-changed="slideHasChanged($index)">
         <ion-slide>
@@ -71,6 +81,8 @@
           </div>
         </ion-slide>
     </ion-slide-box>
+  </div>
+  
   </ion-content>
   </ion-pane>
   </body>
