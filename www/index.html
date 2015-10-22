@@ -43,8 +43,13 @@
     <ion-content >
     <button class="button" ng-click="main.selectAll()">Select All</button>
     <p>{{main.rows}}
-    <p> Geolocation Coordinates: {{main.coordinates.lat}}, {{main.coordinates.long}}</p>
-    <ion-slide-box on-slide-changed="slideHasChanged($index)">
+    <div class="button-bar">
+      <a ng-repeat="button in main.buttons"
+         ng-class="{'active': $index === main.current}"
+         ng-click="main.slide($index)"
+         class="button button-stable">{{ button.name }}</a>
+    </div>
+    <ion-slide-box on-slide-changed="main.slide($index)">
         <ion-slide>
           <div>
             <p>{{main.showTime}}</p>

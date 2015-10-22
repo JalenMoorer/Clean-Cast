@@ -1,9 +1,15 @@
 angular.module('mainCtrl', ['ionic', 'ngCordova'])
 
-.controller('mainController', function (Geolocation, Weather, Database, $cordovaSQLite, $timeout){
+.controller('mainController', function (Geolocation, Weather, Database, $cordovaSQLite, $ionicSlideBoxDelegate, $timeout){
 
     var self = this;
     self.processing = true;
+
+    self.buttons = [
+        { name: 'Current'},
+        { name: 'Hourly'},
+        { name: 'Daily'}
+    ];
 
     Geolocation.getCoordinates().then(function(position){
         self.coordinates = {lat: position.coords.latitude, long: position.coords.longitude};
@@ -89,6 +95,13 @@ angular.module('mainCtrl', ['ionic', 'ngCordova'])
     self.selectAll = function() {
         var rows = Database.fetchAll();
         self.rows = rows;
+    };
+
+
+
+    self.slide = function(index) {
+        self.current = index;
+        $ionicSlideBoxDelegate.slide(index);
     };
 
     self.getTime();
