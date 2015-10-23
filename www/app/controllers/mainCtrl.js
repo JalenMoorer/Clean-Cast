@@ -4,6 +4,7 @@ angular.module('mainCtrl', ['ionic', 'ngCordova'])
 
     var self = this;
     self.processing = true;
+    self.showSearch = false;
 
     self.buttons = [
         { name: 'Current'},
@@ -27,10 +28,6 @@ angular.module('mainCtrl', ['ionic', 'ngCordova'])
             self.daily = self.convertTime(daily);
 
             self.getLocation(lat, long);
-
-            //var alert = data.alerts[0];
-            //self.alert = alert;
-            
         });
     };
 
@@ -97,14 +94,23 @@ angular.module('mainCtrl', ['ionic', 'ngCordova'])
         self.rows = rows;
     };
 
-
-
     self.slide = function(index) {
         $ionicScrollDelegate.scrollTop();
         self.current = index;
         //if(index === 0 ) $ionicScrollDelegate.freezeScroll([y])
         $ionicSlideBoxDelegate.slide(index);
         $ionicScrollDelegate.resize();
+    };
+
+    self.showSearch = function() {
+        if (self.showSearch) {
+            self.showSearch = false;
+            console.log("showSearch is false" );
+        }
+        else {
+            self.showSearch = false;
+            console.log("showSearch is true" );
+        }
     };
 
     self.getTime();
