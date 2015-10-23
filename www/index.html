@@ -41,22 +41,15 @@
 
   <div ng-if="!main.processing">
     <ion-content scroll="false">
-    <button class="button" ng-click="main.selectAll()">Select All</button>
-    <p>{{main.rows}}
-    <div class="button-bar">
-      <a ng-repeat="button in main.buttons"
-         ng-class="{'active': $index === main.current}"
-         ng-click="main.slide($index)"
-         class="button button-stable">{{ button.name }}</a>
-    </div>
-
+    <!--<button class="button" ng-click="main.selectAll()">Select All</button>
+    <p>{{main.rows}}</p>
+    -->
 
     <ion-slide-box show-pager="false" on-slide-changed="main.slide($index)">
 
         <ion-slide>
           <div class="card">
             <p>{{main.showTime}}</p>
-            <p>{{main.location.name}}, {{main.location.adminCode1}}</p>
             <p>{{main.currently.temperature}} Degrees F</p>
             <p>{{main.currently.precipProbability}} % Chance of Rain</p>
             <p>{{main.currently.windSpeed}} mph</p>
@@ -95,9 +88,12 @@
   </div>
 
   <div class="bar bar-footer">
-    <button class="button button-clear">Left</button>
-    <div class="title">Title</div>
-    <button class="button button-clear">Right</button>
+    <div class="button-bar">
+      <a ng-repeat="button in main.buttons"
+         ng-class="{'active': $index === main.current}"
+         ng-click="main.slide($index)"
+         class="button button-stable">{{ button.name }}</a>
+    </div>
   </div>
   </ion-content>
   </ion-pane>
