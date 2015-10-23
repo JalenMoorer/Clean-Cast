@@ -46,7 +46,7 @@ angular.module('mainCtrl', ['ionic', 'ngCordova'])
         for (var i=0; i < daily.length; i++) {
             var time = new Date(daily[i].time * 1000);
             var day = time.getDay();
-            var month = time.getMonth() + 1;
+            var month = time.getMonth();
             var date = time.getDate();
 
             daily[i].time = days[day] + " " + months[month] + " " + date; 
@@ -99,7 +99,7 @@ angular.module('mainCtrl', ['ionic', 'ngCordova'])
         self.current = index;
         //if(index === 0 ) $ionicScrollDelegate.freezeScroll([y])
         $ionicSlideBoxDelegate.slide(index);
-        $ionicScrollDelegate.resize();
+       // $ionicScrollDelegate.resize();
     };
 
     self.showSearch = function() {

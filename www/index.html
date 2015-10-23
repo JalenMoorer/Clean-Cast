@@ -26,7 +26,7 @@
   </head>
   <body ng-app="app" ng-controller="mainController as main" ng-cloak>
 
-  <ion-pane>
+<!--   <ion-pane> -->
 
 
 
@@ -36,21 +36,21 @@
 <p>{{main.rows}}</p>
 -->
 
-    <ion-view>
+<!--     <ion-view> -->
       <div ng-if="main.showSearch" data-show-header></div>
       <div ng-if= "!main.showSearch" data-show-search></div>
 
-      <div ng-if="main.processing">
+<!--       <div ng-if="main.processing">
         <ion-content>
          <ion-spinner icon="spiral"></ion-spinner>
         </ion-content>
       </div>
-
+ -->
       <div ng-if="!main.processing">
-        <ion-content has-header="true" has-footer="true" scroll="false">
-          <ion-slide-box show-pager="false" on-slide-changed="main.slide($index)" class="padding">
-
+<!--         <ion-content> -->
+          <ion-slide-box on-slide-changed="main.slide($index)" style="position: absolute !important; top:0; left:0; right:0; bottom:0;">
               <ion-slide>
+              <ion-content>
                 <div class="card">
                   <p>{{main.showTime}}</p>
                   <p>{{main.currently.temperature}} Degrees F</p>
@@ -59,39 +59,42 @@
                   <p>{{main.currently.humidity * 100}}% Humidity</p>
                   <p>{{main.alert.title}}</p>
                 </div>
+              </ion-content>
               </ion-slide>
 
               <ion-slide>
-              <ion-scroll style="height: 800px;">
-              <ion-list>
-                <div class="card" ng-repeat="hourly in main.hourly">
+              <ion-content>
+<!--               <ion-scroll style="width:100vw;height:150vh;" direction="y"> -->
+                <ion-item class="card" item-height="200" collection-repeat="hourly in main.hourly | limitTo: 10">
                   <p>{{hourly.time}}</p>
                   <p>{{hourly.summary}}</p>
                   <p>{{hourly.temperature}} Degrees F</p>
                   <p>{{hourly.precipProbability}} % Chance of Rain</p>
                   <p>{{hourly.windSpeed}} mph</p>
                   <p>{{hourly.humidity * 100}} Humidity</p>
-                </div>
-              </ion-list>
-              </ion-scroll>
+                </ion-item>
+<!--               </ion-scroll> -->
+              </ion-content>
               </ion-slide>
 
               <ion-slide>
-              <ion-scroll style="height: 800px;">
-                <div class="card" ng-repeat="daily in main.daily">
+              <ion-content>
+              <ion-scroll style="width:100vw;height:150vh;" direction="y">
+                <ion-item class="card" item-height="200" collection-repeat="daily in main.daily">
                   <p>{{daily.time}}</p>
                   <p>{{daily.summary}}</p>
                   <p>{{daily.temperature}} Degrees F</p>
                   <p>{{daily.precipProbability}} % Chance of Rain</p>
                   <p>{{daily.windSpeed}} mph</p>
                   <p>{{daily.humidity * 100}} Humidity</p>
-                </div>
-                </ionic-scroll>
+                </ion-item>
+              </ionic-scroll>
+              </ion-content>
               </ion-slide>
 
           </ion-slide-box>
-        </ion-content>
-      </div>
+      <!--   </ion-content> -->
+<!--       </div> -->
 
       <ion-footer-bar class="bar bar-footer bar-positive">
         <div class="button-bar">
@@ -100,8 +103,8 @@
            ng-click="main.slide($index)"
            class="button button-stable">{{ button.name }}</a>
       </ion-footer-bar>
-    </ion-view>
+<!--     </ion-view> -->
 
-  </ion-pane>
+<!--   </ion-pane> -->
   </body>
 </html>

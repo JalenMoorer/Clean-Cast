@@ -19,6 +19,13 @@ $dark:                            #444 !default;
 .text-center {
   text-align: center; }
 
+.new-slider {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0; }
+
 /*!
   Ionicons, v2.0.1
   Created by Ben Sperry for the Ionic Framework, http://ionicons.com/
