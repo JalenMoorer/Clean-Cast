@@ -37,8 +37,8 @@
 -->
 
 <!--     <ion-view> -->
-      <div ng-if="main.showSearch" data-show-header></div>
-      <div ng-if= "!main.showSearch" data-show-search></div>
+      <div ng-show="!main.search" data-show-header></div>
+      <div ng-show="main.search" data-show-search></div>
 
 <!--       <div ng-if="main.processing">
         <ion-content>
