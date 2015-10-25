@@ -4,7 +4,7 @@ angular.module('mainCtrl', ['ionic', 'ngCordova'])
 
     var self = this;
     self.processing = true;
-    self.showSearch = false;
+    self.search = false;
 
     self.buttons = [
         { name: 'Current'},
@@ -102,15 +102,14 @@ angular.module('mainCtrl', ['ionic', 'ngCordova'])
        // $ionicScrollDelegate.resize();
     };
 
-    self.showSearch = function() {
-        if (self.showSearch) {
-            self.showSearch = false;
-            console.log("showSearch is false" );
-        }
-        else {
-            self.showSearch = false;
-            console.log("showSearch is true" );
-        }
+    self.showSearch = function(e) {
+        self.search = true;
+        console.log("showSearch is false" );
+    };
+
+    self.hideSearch = function(e) {
+        self.search = false;
+        console.log("showSearch is true");
     };
 
     self.getTime();

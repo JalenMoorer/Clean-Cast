@@ -26,17 +26,10 @@
   </head>
   <body ng-app="app" ng-controller="mainController as main" ng-cloak>
 
-<!--   <ion-pane> -->
-
-
-
-
-
   <!--<button class="button" ng-click="main.selectAll()">Select All</button>
 <p>{{main.rows}}</p>
 -->
 
-<!--     <ion-view> -->
       <div ng-show="!main.search" data-show-header></div>
       <div ng-show="main.search" data-show-search></div>
 
@@ -47,24 +40,38 @@
       </div>
  -->
       <div ng-if="!main.processing">
-<!--         <ion-content> -->
+
           <ion-slide-box on-slide-changed="main.slide($index)" style="position: absolute !important; top:0; left:0; right:0; bottom:0;">
+
               <ion-slide>
-              <ion-content>
-                <div class="card">
-                  <p>{{main.showTime}}</p>
-                  <p>{{main.currently.temperature}} Degrees F</p>
-                  <p>{{main.currently.precipProbability}} % Chance of Rain</p>
-                  <p>{{main.currently.windSpeed}} mph</p>
-                  <p>{{main.currently.humidity * 100}}% Humidity</p>
-                  <p>{{main.alert.title}}</p>
+              <ion-content scroll="false">
+                <div class="card main-card" style="height: 100%; background-color: gainsboro;">
+                  <div class="padding" style="margin: 0px auto; text-align:center; height: 62%; ">
+                    <div class="absolute-center">
+                      <div class=""><h3 class="summary-temp">{{main.currently.summary}}</h3></div>
+                      <div class=""><h1 class="main-temp">{{main.currently.temperature | number:0}}&deg</h1></div>
+                    </div>
+                  </div>
+                    <hr style="background-color: black; width: 95%; height: 0.7px">
+                  <div class="padding" style="margin: 0px auto; text-align:center; height: 38%; font-weight: 600;">
+                      <div class="padding-vertical row">
+                        <div class="col"><p>{{main.currently.temperature | number: 0 }} &deg</p><p class="text-center">Feels Like</p></div>
+                        <div class="col"><p>{{main.currently.humidity * 100}} %</p><p class="text-center">Humidity</p></div>
+                        <div class="col"><p>{{main.currently.visibility}} MPH</p><p class="text-center">Visibility</p></div>
+                      </div>
+                      <div class="padding-vertical row">
+                        <div class="col"><p>{{main.currently.dewPoint | number: 0}} &deg</p><p class="text-center" >Dew Point</p></div>
+                        <div class="col"><p>{{main.currently.precipProbability * 100 }} %</p><p class="text-center">Precipitation</p></div>
+                        <div class="col"><p>{{main.currently.windSpeed | number: 0}} MPH</p><p class="text-center">Wind Speed</p></div>                
+                      
+                      </div>
+                  </div>                  
                 </div>
               </ion-content>
               </ion-slide>
 
               <ion-slide>
               <ion-content>
-<!--               <ion-scroll style="width:100vw;height:150vh;" direction="y"> -->
                 <ion-item class="card" item-height="200" collection-repeat="hourly in main.hourly | limitTo: 10">
                   <p>{{hourly.time}}</p>
                   <p>{{hourly.summary}}</p>
@@ -73,13 +80,11 @@
                   <p>{{hourly.windSpeed}} mph</p>
                   <p>{{hourly.humidity * 100}} Humidity</p>
                 </ion-item>
-<!--               </ion-scroll> -->
               </ion-content>
               </ion-slide>
 
               <ion-slide>
               <ion-content>
-              <!-- <ion-scroll style="width:100vw;height:150vh;" direction="y"> -->
                 <ion-item class="card" item-height="200" collection-repeat="daily in main.daily">
                   <p>{{daily.time}}</p>
                   <p>{{daily.summary}}</p>
@@ -88,13 +93,10 @@
                   <p>{{daily.windSpeed}} mph</p>
                   <p>{{daily.humidity * 100}} Humidity</p>
                 </ion-item>
-              </ionic-scroll>
               </ion-content>
               </ion-slide>
 
           </ion-slide-box>
-      <!--   </ion-content> -->
-<!--       </div> -->
 
       <ion-footer-bar class="bar bar-footer bar-positive">
         <div class="button-bar">
@@ -103,8 +105,6 @@
            ng-click="main.slide($index)"
            class="button button-stable">{{ button.name }}</a>
       </ion-footer-bar>
-<!--     </ion-view> -->
 
-<!--   </ion-pane> -->
   </body>
 </html>

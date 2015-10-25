@@ -22,6 +22,7 @@ $big-bg:      'http://ioniconf.com/img/bg.jpg';
 
 // old top value for .scroll-content: top: 0
 $new-top:	   44px;
+$new-bottom: 44px;
 
 // Custom Styles
 @import "www/assets/css/style";
@@ -33,7 +34,7 @@ $new-top:	   44px;
   position: absolute;
   top: $new-top;
   right: 0;
-  bottom: 0;
+  bottom: $new-bottom;
   left: 0;
   overflow: hidden;
   margin-top: -1px;
