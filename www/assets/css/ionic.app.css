@@ -32,6 +32,13 @@ $dark:                            #444 !default;
   right: 0;
   bottom: 0; }
 
+.current-weather-info {
+  margin: 0px auto;
+  text-align: center;
+  height: 38%;
+  font-weight: 600;
+  font-family: 'Arial Narrow', Arial, sans-serif; }
+
 .main-card {
   position: absolute;
   top: 0;
