@@ -17,18 +17,32 @@ $dark:                            #444 !default;
 
 // The path for our ionicons font files, relative to the built CSS in www/css
 $ionicons-font-path: "../lib/ionic/fonts" !default;
+$wi-path:            "../lib/weather-icons/font" !default;
 
 $big-bg:      'http://ioniconf.com/img/bg.jpg';
 
 // old top value for .scroll-content: top: 0
 $new-top:	   44px;
 $new-bottom: 44px;
+$card-body-bg: transparent !default;
+$item-font-size: 30px !default;
+$base-color: inherit !default;
 
 // Custom Styles
 @import "www/assets/css/style";
+@import "www/assets/lib/weather-icons/sass/weather-icons";
 
 // Include all of Ionic
 @import "www/assets/lib/ionic/scss/ionic";
+
+.slider {
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  position: absolute !important;
+  visibility: visible;
+}
 
 .scroll-content {
   position: absolute;
@@ -42,3 +56,17 @@ $new-bottom: 44px;
   margin-bottom: -1px;
   width: auto;
   height: auto; }
+
+  .item {
+    border-color: 0px solid black;
+    background-color: transparent;
+    color: #444;
+    position: relative;
+    z-index: 2;
+    display: block;
+    margin: -1px;
+    padding: 16px;
+    border-width: 1px;
+    border-style: inset;
+    font-size: 30px;
+}

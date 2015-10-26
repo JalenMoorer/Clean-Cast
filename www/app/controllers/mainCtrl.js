@@ -1,6 +1,6 @@
 angular.module('mainCtrl', ['ionic', 'ngCordova'])
 
-.controller('mainController', function (Geolocation, Weather, Database, $cordovaSQLite, $ionicSlideBoxDelegate, $ionicScrollDelegate,  $timeout){
+.controller('mainController', function (Geolocation, Weather, Database, $cordovaSQLite, $ionicSlideBoxDelegate, $ionicScrollDelegate,  $timeout, $localstorage){
 
     var self = this;
     self.processing = true;
@@ -97,9 +97,7 @@ angular.module('mainCtrl', ['ionic', 'ngCordova'])
     self.slide = function(index) {
         $ionicScrollDelegate.scrollTop();
         self.current = index;
-        //if(index === 0 ) $ionicScrollDelegate.freezeScroll([y])
         $ionicSlideBoxDelegate.slide(index);
-       // $ionicScrollDelegate.resize();
     };
 
     self.showSearch = function(e) {
@@ -111,6 +109,7 @@ angular.module('mainCtrl', ['ionic', 'ngCordova'])
         self.search = false;
         console.log("showSearch is true");
     };
+
 
     self.getTime();
 });
