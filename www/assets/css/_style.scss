@@ -71,27 +71,27 @@
 ******************************************/
 
 .weather-theme-clear-day {
-	background: linear-gradient(to bottom, #2473ab 0%,#1e528e 70%,#5b7983 100%);
+	    background: linear-gradient(to bottom, #5BC9CE 0%, #229FD4 70%, #12518C 100%);
 	color: #fff;
 }
 
 .weather-theme-clear-night {
-	background: linear-gradient(to bottom, #020111 60%,#20202c 100%);
+    background: linear-gradient(to bottom, #1B0450 0%, #185963 70%, #1C2E56 100%);
 	color: #fff;
 }
 
-.weather-theme-clear-rain {
-	background: linear-gradient(to bottom, #20202c 0%,#515175 100%);
+.weather-theme-rain {
+	background: linear-gradient(to bottom, #777373 0%, #633950 70%, #201E23 100%);
 	color: #fff;
 }
 
 .weather-theme-snow {
-	background: linear-gradient(to bottom, #FFFEFE 0%,#929296 100%);
+	background: linear-gradient(to bottom, #FFFFFF 0%, rgb(199, 199, 222) 70%, #DDE3E6 100%);
 	color: #000;
 }
 
 .weather-theme-sleet {
-	background: linear-gradient(to bottom, #EFEFEF 0%,#ADADD4 100%);
+	background: linear-gradient(to bottom, #C5C5D4 0%, rgb(186, 203, 232) 70%, #6AA3BF 100%);
 	color: #000;
 }
 
@@ -101,8 +101,8 @@
 }
 
 .weather-theme-fog {
-	backgroind: linear-gradient(to bottom, rgba(0, 0, 0, 0.02) 0%,#888A81 100%);
-	color: #000;
+	background: linear-gradient(to bottom, #6F6969 0%, rgb(234, 224, 224) 70%, #E4D9D9 100%);
+    color: #2D2525;
 }
 
 .weather-theme-cloudy {
@@ -110,12 +110,12 @@
 }
 
 .weather-theme-partly-cloudy-day {
-	background: linear-gradient(to bottom, #94c5f8 1%,#a6e6ff 70%,#b1b5ea 100%);
+    background: linear-gradient(to bottom, #97BDBF 0%, #79C1E0 70%, #768DA2 100%);
 	color: #fff;
 }
 
 .weather-theme-partly-cloudy-night {
-	background: linear-gradient(to bottom, #020111 85%,#191621 100%);
+	background: linear-gradient(to bottom, #060606 0%, #40064E 70%, #250F3C 100%);
 	color: #fff;
 }
 
