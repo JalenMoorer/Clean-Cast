@@ -16,12 +16,5 @@ angular.module('app', ['ionic', 'mainCtrl', 'searchDirective', 'geolocationServi
     if(window.StatusBar) {
       StatusBar.styleDefault();
     }
-
-    window.plugins.sqlDB.copy("zip.db", function() {
-    db = $cordovaSQLite.openDB("zip.db");
-    }, function(error) {
-    console.error("There was an error copying the database: " + error);
-    db = $cordovaSQLite.openDB("zip.db");
-    });
   });
 });

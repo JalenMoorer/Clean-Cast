@@ -69,21 +69,7 @@ angular.module('mainCtrl', ['ionic', 'ngCordova'])
 
         return hourly;
     };
-
-    self.getTime = function() {
-        var current_time = new Date();
-        var hour = current_time.getHours();
-        var min = current_time.getMinutes();
-        var second = current_time.getSeconds();
-
-        var time_period = hour < 12 ? 'AM' : 'PM';
-        if (hour > 12) hour = hour % 12;
-        min = min < 10 ? "0" + min : "" + min;
-        if (self.isMidnight(hour)) hour = "12";
-
-        self.showTime = hour + ":" + min + ":" + second + " " + time_period;
-        $timeout(self.getTime, 500);
-    };
+    
 
     self.isMidnight = function(hour) {
         if (hour === 0) return true;
@@ -109,7 +95,5 @@ angular.module('mainCtrl', ['ionic', 'ngCordova'])
         self.search = false;
         console.log("showSearch is true");
     };
-
-
-    self.getTime();
+    
 });
