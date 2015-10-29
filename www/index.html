@@ -60,7 +60,7 @@
                 </div>
                 <div class="padding-vertical row">
                   <div class="col"><p>{{main.currently.dewPoint | number: 0}} &deg</p><p class="text-center" >Dew Point</p></div>
-                  <div class="col"><p>{{main.currently.precipProbability * 100 }} %</p><p class="text-center">Precipitation</p></div>
+                  <div class="col"><p>{{main.currently.precipProbability * 100  | number : 0 }} %</p><p class="text-center">Precipitation</p></div>
                   <div class="col"><p>{{main.currently.windSpeed | number: 0}} MPH</p><p class="text-center">Wind Speed</p></div>                
                 
                 </div>
@@ -85,7 +85,7 @@
                 <p class="padding-vertical card-font ">{{hourly.time}}</p>
               </div>
               <div class="col col-50">
-                <p class="padding-vertical card-font text-right"><i class="wi wi-umbrella"></i>  {{hourly.precipProbability * 100}} %</p>
+                <p class="padding-vertical card-font text-right"><i class="wi wi-umbrella"></i>  {{hourly.precipProbability * 100 | number : 0}} %</p>
               </div>
             </div>
             <div class="row">
@@ -113,7 +113,7 @@
                 <p class="padding-vertical card-font ">{{daily.time}}</p>
               </div>
               <div class="col col-50">
-                <p class="padding-vertical card-font text-right"><i class="wi wi-umbrella"></i>  {{daily.precipProbability * 100}} %</p>
+                <p class="padding-vertical card-font text-right"><i class="wi wi-umbrella"></i>  {{daily.precipProbability * 100 | number : 0}} %</p>
               </div>
             </div>
             <div class="row">

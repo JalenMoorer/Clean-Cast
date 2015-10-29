@@ -1,6 +1,6 @@
 angular.module('mainCtrl', ['ionic', 'ngCordova'])
 
-.controller('mainController', function (Geolocation, Weather, Database, $cordovaSQLite, $ionicSlideBoxDelegate, $ionicScrollDelegate,  $timeout, $localstorage){
+.controller('mainController', function (Geolocation, Weather, Database, $cordovaSQLite, $ionicSlideBoxDelegate, $ionicScrollDelegate,  $timeout, $localstorage, $scope){
 
     var self = this;
     self.processing = true;
@@ -15,6 +15,7 @@ angular.module('mainCtrl', ['ionic', 'ngCordova'])
     Geolocation.getCoordinates().then(function(position){
         self.coordinates = {lat: position.coords.latitude, long: position.coords.longitude};
         self.getWeather(self.coordinates.lat, self.coordinates.long);
+        console.log(self.coordinates);
     });
 
     self.getWeather = function(lat, long) {
@@ -69,15 +70,10 @@ angular.module('mainCtrl', ['ionic', 'ngCordova'])
 
         return hourly;
     };
-    
+
 
     self.isMidnight = function(hour) {
         if (hour === 0) return true;
-    };
-
-    self.selectAll = function() {
-        var rows = Database.fetchAll();
-        self.rows = rows;
     };
 
     self.slide = function(index) {
@@ -88,12 +84,22 @@ angular.module('mainCtrl', ['ionic', 'ngCordova'])
 
     self.showSearch = function(e) {
         self.search = true;
-        console.log("showSearch is false" );
     };
 
     self.hideSearch = function(e) {
         self.search = false;
-        console.log("showSearch is true");
     };
-    
+
+    self.searchWeather = function() {
+        var str = self.searchdata.trim();
+        var locations =  str.match(/[^, ]+/g);
+        var iso = self.iso;
+
+        Geolocation.getSearchedLocation(locations, iso).success(function(data){
+            console.log(data);
+        });
+
+        self.searchdata = '';
+    };
+
 });

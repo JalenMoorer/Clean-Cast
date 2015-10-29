@@ -1,9 +1,19 @@
 <ion-header-bar  class="bar bar-header bar-positive bar-stable item-input-inset">
+ <form ng-submit="main.searchWeather()">
+
   <label class="item-input-wrapper">
     <i class="icon ion-ios-search placeholder-icon"></i>
-    <input type="search" placeholder="Search Location (i.e. Miami, FL)">
+    	<input type="search" ng-enter="main.searchWeather()" ng-model="main.searchdata" placeholder="Miami, FL / London, UK" style="float: right;">
   </label>
-  <button ng-submit="main.hideSearch()" ng-click="main.hideSearch()" class="button button-clear">
-    Cancel
+
+  </form>
+    <select ng-model="main.iso"class="form-control iso-option">
+	<option selected disabled hidden value=''>-Select-</option>
+    <option  value="USA">USA</option>
+    <option value="INTL">INTL</option>
+</select>
+
+  <button ng-click="main.hideSearch()" class="button button-clear">
+    <i class="icon ion-close"></i>
   </button>
 </ion-header-bar>
