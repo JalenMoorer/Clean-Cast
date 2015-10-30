@@ -5,7 +5,7 @@ angular.module('geolocationService', ['ngCordova'])
 .factory('Geolocation', function ($cordovaGeolocation, GEONAMES_KEY, $http, $q, $timeout) {
 
     var geonames_url = 'http://api.geonames.org/';
-    var geonames_city_url = 'http://geodata.byethost24.com/cities/api/';
+    var geonames_city_url = '';
     
     function getCurrentCoordinates() {
         var posOptions = {timeout: 10000, enableHighAccuracy: false};
@@ -18,8 +18,6 @@ angular.module('geolocationService', ['ngCordova'])
 
     function getSearchPlace(location, iso) {
         console.log(location, iso);
-        if(iso)
-            return $http.get(geonames_city_url + "city?name='" +location[0] +"'&country='" + location[1] + "'");
     }
 
     return {

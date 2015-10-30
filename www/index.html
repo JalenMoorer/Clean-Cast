@@ -33,12 +33,15 @@
 
   <div ng-show="!main.search" data-show-header></div>
   <div ng-show="main.search" data-show-search></div>
-    <!--       <div ng-if="main.processing">
-            <ion-content>
+
+
+    <!--<div ng-if="main.processing">
+          <ion-content>
              <ion-spinner icon="spiral"></ion-spinner>
-            </ion-content>
-          </div>
-     -->
+          </ion-content>
+        </div>
+    -->
+
   <div ng-if="!main.processing">
     <ion-slide-box on-slide-changed="main.slide($index)" ng-class="'weather-theme-' + main.currently.icon">
 
@@ -71,7 +74,8 @@
 
         <ion-slide>
         <ion-content>
-          <ion-item class="card card-font" item-height="200" item-width="100%" collection-repeat="hourly in main.hourly | limitTo: 10">
+        <ion-list>
+          <ion-item class="card card-font" item-height="200" item-width="100%" collection-repeat="hourly in main.hourly" item-render-buffer>
             <div class="row " >
                 <div class="col col-50">
                   <p class="padding-vertical card-font"><i ng-class="' wi wi-forecast-io-' + hourly.icon"></i> {{hourly.summary}}</p>
@@ -97,12 +101,14 @@
               </div>
             </div>
           </ion-item>
+        </ion-list>
         </ion-content>
         </ion-slide>
 
         <ion-slide>
         <ion-content>
-          <ion-item class="card card-font item-text-wrap" item-height="200" item-width="100%" collection-repeat="daily in main.daily">
+        <ion-list>
+          <ion-item class="card card-font item-text-wrap" item-height="200" item-width="100%" collection-repeat="daily in main.daily" item-render-buffer>
             <div class="row " >
                 <div class="col">
                   <p class="padding-vertical card-font"><i ng-class="' wi wi-forecast-io-' + daily.icon"></i> {{daily.summary}}</p>
@@ -125,6 +131,7 @@
               </div>
             </div>
           </ion-item>
+        </ion-list>
         </ion-content>
         </ion-slide>
     </ion-slide-box>
