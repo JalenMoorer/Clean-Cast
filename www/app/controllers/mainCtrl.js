@@ -1,10 +1,9 @@
 angular.module('mainCtrl', ['ionic', 'ngCordova'])
 
-.controller('mainController', function (Geolocation, Weather, Database, $cordovaSQLite, $ionicSlideBoxDelegate, $ionicScrollDelegate,  $timeout, $localstorage, $scope){
+.controller('mainController', function (Geolocation, Weather, $cordovaSQLite, $ionicSlideBoxDelegate, $ionicScrollDelegate,  $timeout, $localstorage, $scope){
 
     var self = this;
     self.processing = true;
-    self.search = false;
 
     self.buttons = [
         { name: 'Current'},
@@ -80,26 +79,6 @@ angular.module('mainCtrl', ['ionic', 'ngCordova'])
         $ionicScrollDelegate.scrollTop();
         self.current = index;
         $ionicSlideBoxDelegate.slide(index);
-    };
-
-    self.showSearch = function(e) {
-        self.search = true;
-    };
-
-    self.hideSearch = function(e) {
-        self.search = false;
-    };
-
-    self.searchWeather = function() {
-        var str = self.searchdata.trim();
-        var locations =  str.match(/[^, ]+/g);
-        var iso = self.iso;
-
-        Geolocation.getSearchedLocation(locations, iso).success(function(data){
-            console.log(data);
-        });
-
-        self.searchdata = '';
     };
 
 });

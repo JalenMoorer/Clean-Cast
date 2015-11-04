@@ -21,9 +21,7 @@
     <script src="app/controllers/mainCtrl.js"></script>
     <script src="app/services/geolocation.js"></script>
     <script src="app/services/weather.js"></script>
-    <script src="app/services/db.js"></script>
     <script src="app/services/localstorage.js"></script>
-    <script src="app/directives/search.js"></script>
   </head>
   <body ng-app="app" ng-controller="mainController as main" ng-cloak>
 
@@ -31,9 +29,14 @@
   <p>{{main.rows}}</p>
   -->
 
-  <div ng-show="!main.search" data-show-header></div>
-  <div ng-show="main.search" data-show-search></div>
 
+  <ion-header-bar  class="bar bar-header bar-positive ">
+    <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
+    <h1 style="text-align: center" class="title">{{main.location.asciiName}} {{main.location.adminCode1}}</h1>
+    <div class="buttons">
+      <button ng-click="main.showSearch()" class="button button-clear"><i class="icon ion-search"></i></button>
+    </div> 
+  </ion-header-bar> 
 
     <!--<div ng-if="main.processing">
           <ion-content>
