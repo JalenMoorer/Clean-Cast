@@ -21,7 +21,6 @@ angular.module('mainCtrl', ['ionic', 'ngCordova'])
         Geolocation.getCoordinates().then(function(position){
             self.coordinates = {lat: position.coords.latitude, long: position.coords.longitude};
             getWeather(self.coordinates.lat, self.coordinates.long);
-            console.log(self.coordinates);
         });
     }
 
@@ -40,8 +39,7 @@ angular.module('mainCtrl', ['ionic', 'ngCordova'])
 
     function getLocation (lat, long) {
         Geolocation.getCurrentLocation(lat, long).success(function(data) {
-            var location = data.geonames[0];
-            self.location = location;
+            self.location = data.address;
             self.processing = false;
         });
     }

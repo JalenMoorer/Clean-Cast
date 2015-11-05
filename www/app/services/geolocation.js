@@ -5,7 +5,6 @@ angular.module('geolocationService', ['ngCordova'])
 .factory('Geolocation', function ($cordovaGeolocation, GEONAMES_KEY, $http, $q, $timeout) {
 
     var geonames_url = 'http://api.geonames.org/';
-    var geonames_city_url = '';
     
     function getCurrentCoordinates() {
         var posOptions = {timeout: 10000, enableHighAccuracy: false};
@@ -13,11 +12,7 @@ angular.module('geolocationService', ['ngCordova'])
     }
 
     function getNearbyPlace(lat, long) {
-        return $http.get(geonames_url + 'findNearbyPlaceNameJSON?formatted=true&lat=' + lat +  '&lng=' + long + '&username=' + GEONAMES_KEY + '&style=full');
-    }
-
-    function getSearchPlace(location, iso) {
-        console.log(location, iso);
+        return $http.get(geonames_url + 'findNearestAddressJSON?formatted=true&lat=' + lat + '&lng=' + long + '&username=' + GEONAMES_KEY + '&style=full');
     }
 
     return {
@@ -32,10 +27,6 @@ angular.module('geolocationService', ['ngCordova'])
 
         getCurrentLocation: function(lat, long) {
             return getNearbyPlace(lat, long);
-        },
-
-        getSearchedLocation: function(location, iso) {
-            return getSearchPlace(location, iso);
         }
     };
 });
