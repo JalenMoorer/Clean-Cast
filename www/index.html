@@ -32,7 +32,7 @@
   -->
 
 
-  <ion-header-bar  class="bar bar-header bar-positive ">
+  <ion-header-bar  class="bar bar-header bar-dark">
     <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
     <h1 style="text-align: center" class="title">{{main.location.asciiName}} {{main.location.adminCode1}}</h1>
     <div class="buttons">
@@ -142,7 +142,7 @@
     </ion-slide-box>
   </div>
 
-      <ion-footer-bar has-header="true" has-footer="true" class="bar bar-footer bar-positive">  
+      <ion-footer-bar has-header="true" has-footer="true" class="bar bar-footer bar-dark">  
         <div class="button-bar">
         <a ng-repeat="button in main.buttons"
            ng-class="{'active-slide': $index === main.current}"
