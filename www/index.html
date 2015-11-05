@@ -22,6 +22,8 @@
     <script src="app/services/geolocation.js"></script>
     <script src="app/services/weather.js"></script>
     <script src="app/services/localstorage.js"></script>
+    <script src="app/directives/time.js"></script>
+
   </head>
   <body ng-app="app" ng-controller="mainController as main" ng-cloak>
 
@@ -77,8 +79,8 @@
 
         <ion-slide>
         <ion-content>
-        <ion-list>
-          <ion-item class="card card-font" item-height="200" item-width="100%" collection-repeat="hourly in main.hourly" item-render-buffer>
+        <ion-list convert-hour>
+          <ion-item  class="card card-font" item-height="200" item-width="100%" collection-repeat="hourly in main.hourly" item-render-buffer>
             <div class="row " >
                 <div class="col col-50">
                   <p class="padding-vertical card-font"><i ng-class="' wi wi-forecast-io-' + hourly.icon"></i> {{hourly.summary}}</p>
@@ -110,7 +112,7 @@
 
         <ion-slide>
         <ion-content>
-        <ion-list>
+        <ion-list convert-day>
           <ion-item class="card card-font item-text-wrap" item-height="200" item-width="100%" collection-repeat="daily in main.daily" item-render-buffer>
             <div class="row " >
                 <div class="col">
