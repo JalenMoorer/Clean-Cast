@@ -16,11 +16,17 @@
 }
 
 .text-center {
-	text-align: center;
+	text-align: center !important;
 }
 
 .text-right {
 	text-align: right;
+}
+
+.currently-data {
+	margin: 0px auto; 
+	text-align:center; 
+	height: 62%;
 }
 
 .iso-option{
@@ -31,6 +37,10 @@
 	padding-right: 5px;
 	padding-left: 8px;
 	background: #eee;	
+}
+
+.hr-line {
+	width: 85%;
 }
 
 .active-slide {
@@ -88,6 +98,10 @@
 .card-font {
 	font-size: 122% !important;
 	color: inherit !important;
+}
+
+.bar-opacity {
+	    background-color: rgba(68, 68, 68, 0.11) !important;
 }
 
 /******************************************

@@ -27,12 +27,15 @@ angular.module('mainCtrl', ['ionic', 'ngCordova'])
     function getWeather (lat, long) {
         Weather.getWeather(lat, long).success(function(data){
             self.currently = data.currently;
-            self.hourly = data.hourly.data;
+            var hourly = data.hourly.data;
             self.daily = data.daily.data;
 
-            self.hourly = convertHour(self.hourly);
-            self.daily = convertTime(self.daily);
+            hourly = convertHour(hourly);
+            self.daily = convertTime(self.daily);    
+            self.hourly = hourly.splice(1,7);
 
+            console.log(self.currently);
+        
             getLocation(lat, long);
         });
     }
@@ -83,22 +86,4 @@ angular.module('mainCtrl', ['ionic', 'ngCordova'])
 
     /* Time in Milliseconds 60*60*1000* 3600000*/
     $interval(init, 60000);
-
-document.addEventListener('deviceready', function () {
-    // Android customization
-    cordova.plugins.backgroundMode.setDefaults({ text:'Doing heavy tasks.'});
-    // Enable background mode
-    cordova.plugins.backgroundMode.enable();
-
-    // Called when background mode has been activated
-    cordova.plugins.backgroundMode.onactivate = function () {
-        setTimeout(function () {
-            // Modify the currently displayed notification
-            cordova.plugins.backgroundMode.configure({
-                text:'Running in background for more than 5s now.'
-            });
-        }, 5000);
-    };
-}, false);
-    
 });

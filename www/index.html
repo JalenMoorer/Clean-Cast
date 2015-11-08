@@ -28,29 +28,29 @@
 
   <div ng-if="main.processing">
     <ion-content class="loading-screen">
-      <ion-spinner icon="ripple" class="absolute-center"></ion-spinner>
+      <ion-spinner icon="lines" class="absolute-center"></ion-spinner>
       <h1 class="absolute-center text-center">Loading App...</h1>
     </ion-content>
   </div>
     
   <div ng-if="!main.processing">
 
-    <ion-header-bar  class="bar bar-header bar-dark">
-      <h1 style="text-align: center" class="title">{{main.location.adminName2}} {{main.location.adminCode1}}</h1>
+    <ion-header-bar class="bar bar-header bar-dark">
+      <h1 class="title text-center">{{main.location.adminName2}} {{main.location.adminCode1}}</h1>
     </ion-header-bar> 
 
-    <ion-slide-box on-slide-changed="main.slide($index)" ng-class="'weather-theme-' + main.currently.icon">
+    <ion-slide-box show-pager="false" on-slide-changed="main.slide($index)" ng-class="'weather-theme-' + main.currently.icon">
 
         <ion-slide>
-        <ion-content scroll="false">
-          <div class="main-card" style="height: 100%; ">
-            <div class="padding" style="margin: 0px auto; text-align:center; height: 62%; ">
+        <ion-content overflow-scroll="true" scroll="false">
+          <div class="main-card">
+            <div class="padding currently-data">
               <div class="absolute-center">
                 <div class=""><h3 class="summary-temp"><i ng-class="' wi wi-forecast-io-' + main.currently.icon"></i> {{main.currently.summary}}</h3></div>
                 <div class=""><h1 class="main-temp">{{main.currently.temperature | number:0}}&deg</h1></div>
               </div>
             </div>
-              <hr style="width: 85%;">
+              <hr class="hr-line">
             <div class="padding current-weather-info">
                 <div class="padding-vertical row">
                   <div class="col"><p>{{main.currently.temperature | number: 0 }} &deg</p><p class="text-center">Feels Like</p></div>
@@ -69,9 +69,8 @@
         </ion-slide>
 
         <ion-slide>
-        <ion-content>
-        <ion-list>
-          <ion-item  class="card card-font" item-height="200" item-width="100%" collection-repeat="hourly in main.hourly" item-render-buffer>
+        <ion-content overflow-scroll="true" class="has-header">
+          <ion-item  class="card card-font" item-height="200" item-width="100%" collection-repeat="hourly in main.hourly">
             <div class="row " >
                 <div class="col col-50">
                   <p class="padding-vertical card-font"><i ng-class="' wi wi-forecast-io-' + hourly.icon"></i> {{hourly.summary}}</p>
@@ -97,14 +96,12 @@
               </div>
             </div>
           </ion-item>
-        </ion-list>
         </ion-content>
         </ion-slide>
 
         <ion-slide>
-        <ion-content>
-        <ion-list>
-          <ion-item class="card card-font item-text-wrap" item-height="200" item-width="100%" collection-repeat="daily in main.daily" item-render-buffer>
+        <ion-content overflow-scroll="true" class="has-header">
+          <ion-item class="card card-font item-text-wrap" item-height="200" item-width="100%" collection-repeat="daily in main.daily" >
             <div class="row " >
                 <div class="col">
                   <p class="padding-vertical card-font"><i ng-class="' wi wi-forecast-io-' + daily.icon"></i> {{daily.summary}}</p>
@@ -127,12 +124,11 @@
               </div>
             </div>
           </ion-item>
-        </ion-list>
         </ion-content>
         </ion-slide>
     </ion-slide-box>
 
-    <ion-footer-bar has-header="true" has-footer="true" class="bar bar-footer bar-dark">  
+    <ion-footer-bar has-header="true" has-footer="true" class="bar bar-footer bar-opacity">  
       <div class="button-bar">
         <a ng-repeat="button in main.buttons"
            ng-class="{'active-slide': $index === main.current}"
