@@ -30,8 +30,8 @@ angular.module('mainCtrl', ['ionic', 'ngCordova'])
             self.hourly = data.hourly.data;
             self.daily = data.daily.data;
 
-            $scope.hourly = self.hourly;
-            $scope.daily = self.daily;
+            self.hourly = convertHour(self.hourly);
+            self.daily = convertTime(self.daily);
 
             getLocation(lat, long);
         });
@@ -44,11 +44,61 @@ angular.module('mainCtrl', ['ionic', 'ngCordova'])
         });
     }
 
+     function convertTime (daily) {
+        var days = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+        var months = ["Jan", "Feb", "March", "Apr", "May", "June", "July", "Aug", "Sept", "Oct", "Nov", "Dec"];
+        for (var i=0; i < daily.length; i++) {
+            var time = new Date(daily[i].time * 1000);
+            var day = time.getDay();
+            var month = time.getMonth();
+            var date = time.getDate();
+
+            daily[i].time = days[day] + " " + months[month] + " " + date; 
+        }
+
+        return daily;
+    }
+
+    function convertHour (hourly) {
+        for (var i=0; i < hourly.length; i++) {
+            var time = new Date(hourly[i].time * 1000);
+            var hour = time.getHours();
+            var time_period = hour < 12 ? 'AM' : 'PM';
+
+            if (hour > 12) hour = hour % 12;
+            if (hour === 0) hour = "12";
+
+            hourly[i].time = hour + " " + time_period;
+        }
+
+        return hourly;
+    }
+
     function init() {
         getCoordinates();
         console.log("Init Called");
     }
 
     init();
-    $interval(init, 60*60*1000);
+
+    /* Time in Milliseconds 60*60*1000* 3600000*/
+    $interval(init, 60000);
+
+document.addEventListener('deviceready', function () {
+    // Android customization
+    cordova.plugins.backgroundMode.setDefaults({ text:'Doing heavy tasks.'});
+    // Enable background mode
+    cordova.plugins.backgroundMode.enable();
+
+    // Called when background mode has been activated
+    cordova.plugins.backgroundMode.onactivate = function () {
+        setTimeout(function () {
+            // Modify the currently displayed notification
+            cordova.plugins.backgroundMode.configure({
+                text:'Running in background for more than 5s now.'
+            });
+        }, 5000);
+    };
+}, false);
+    
 });

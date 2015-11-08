@@ -1,5 +1,20 @@
 /* Main Control Styles */
 
+.loading-screen {
+	background-color: #ECEEEF;
+}
+
+.loading-screen h1 {
+    margin-top: 65px;
+    font-size: x-large;
+    padding-left: 10px;
+}
+
+.spinner svg {
+	width: 100% !important;
+    height: 70% !important;
+}
+
 .text-center {
 	text-align: center;
 }

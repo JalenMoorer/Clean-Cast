@@ -22,32 +22,23 @@
     <script src="app/services/geolocation.js"></script>
     <script src="app/services/weather.js"></script>
     <script src="app/services/localstorage.js"></script>
-    <script src="app/directives/time.js"></script>
 
   </head>
   <body ng-app="app" ng-controller="mainController as main" ng-cloak>
 
-    <!--<button class="button" ng-click="main.selectAll()">Select All</button>
-  <p>{{main.rows}}</p>
-  -->
-
-
-  <ion-header-bar  class="bar bar-header bar-dark">
-    <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
-    <h1 style="text-align: center" class="title">{{main.location.adminName2}} {{main.location.adminCode1}}</h1>
-    <div class="buttons">
-      <button ng-click="main.showSearch()" class="button button-clear"><i class="icon ion-search"></i></button>
-    </div> 
-  </ion-header-bar> 
-
-    <!--<div ng-if="main.processing">
-          <ion-content>
-             <ion-spinner icon="spiral"></ion-spinner>
-          </ion-content>
-        </div>
-    -->
-
+  <div ng-if="main.processing">
+    <ion-content class="loading-screen">
+      <ion-spinner icon="ripple" class="absolute-center"></ion-spinner>
+      <h1 class="absolute-center text-center">Loading App...</h1>
+    </ion-content>
+  </div>
+    
   <div ng-if="!main.processing">
+
+    <ion-header-bar  class="bar bar-header bar-dark">
+      <h1 style="text-align: center" class="title">{{main.location.adminName2}} {{main.location.adminCode1}}</h1>
+    </ion-header-bar> 
+
     <ion-slide-box on-slide-changed="main.slide($index)" ng-class="'weather-theme-' + main.currently.icon">
 
         <ion-slide>
@@ -79,7 +70,7 @@
 
         <ion-slide>
         <ion-content>
-        <ion-list convert-hour>
+        <ion-list>
           <ion-item  class="card card-font" item-height="200" item-width="100%" collection-repeat="hourly in main.hourly" item-render-buffer>
             <div class="row " >
                 <div class="col col-50">
@@ -112,7 +103,7 @@
 
         <ion-slide>
         <ion-content>
-        <ion-list convert-day>
+        <ion-list>
           <ion-item class="card card-font item-text-wrap" item-height="200" item-width="100%" collection-repeat="daily in main.daily" item-render-buffer>
             <div class="row " >
                 <div class="col">
@@ -140,15 +131,17 @@
         </ion-content>
         </ion-slide>
     </ion-slide-box>
-  </div>
 
-      <ion-footer-bar has-header="true" has-footer="true" class="bar bar-footer bar-dark">  
-        <div class="button-bar">
+    <ion-footer-bar has-header="true" has-footer="true" class="bar bar-footer bar-dark">  
+      <div class="button-bar">
         <a ng-repeat="button in main.buttons"
            ng-class="{'active-slide': $index === main.current}"
            ng-click="main.slide($index)"
            class="button button-clear button-light">{{ button.name }}</a>
-      </ion-footer-bar>
+    </ion-footer-bar>
+
+  </div>
+
 
   </body>
 </html>

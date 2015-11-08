@@ -15,6 +15,10 @@ angular.module('geolocationService', ['ngCordova'])
         return $http.get(geonames_url + 'findNearestAddressJSON?formatted=true&lat=' + lat + '&lng=' + long + '&username=' + GEONAMES_KEY + '&style=full');
     }
 
+    function testCall() {
+        return $http.get('http://localhost:3000/');
+    }
+
     return {
         getCoordinates: function() {
             var promise = getCurrentCoordinates();
@@ -27,6 +31,10 @@ angular.module('geolocationService', ['ngCordova'])
 
         getCurrentLocation: function(lat, long) {
             return getNearbyPlace(lat, long);
+        },
+
+        test: function(){
+            return testCall();
         }
     };
 });
