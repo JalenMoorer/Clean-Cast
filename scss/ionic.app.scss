@@ -58,11 +58,8 @@ $base-color: inherit !default;
   height: auto; }
 
   .item {
-    border-color: 0px solid black;
-    background-color: transparent;
     color: #444;
     position: relative;
-    z-index: 2;
     display: block;
     margin: -1px;
     padding: 16px;

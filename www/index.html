@@ -36,18 +36,16 @@
   <div ng-if="!main.processing">
 
     <ion-header-bar class="bar bar-header bar-dark">
-      <h1 class="title text-center">{{main.location.adminName2}} {{main.location.adminCode1}}</h1>
+      <h1 class="title text-center"><i  ng-click="main.showAlert();" class="padding assertive ion-alert-circled" ng-if="main.alerts"></i>{{main.location.adminName2}} {{main.location.adminCode1}}</h1>
     </ion-header-bar> 
 
     <ion-slide-box show-pager="false" on-slide-changed="main.slide($index)" ng-class="'weather-theme-' + main.currently.icon">
 
         <ion-slide>
-        <ion-content overflow-scroll="true" scroll="false">
-          <div class="main-card">
             <div class="padding currently-data">
               <div class="absolute-center">
-                <div class=""><h3 class="summary-temp"><i ng-class="' wi wi-forecast-io-' + main.currently.icon"></i> {{main.currently.summary}}</h3></div>
-                <div class=""><h1 class="main-temp">{{main.currently.temperature | number:0}}&deg</h1></div>
+                <div><h3 class="summary-temp"><i ng-class="' wi wi-forecast-io-' + main.currently.icon"></i> {{main.currently.summary}}</h3></div>
+                <div><h1 class="main-temp">{{main.currently.temperature | number:0}}&deg</h1></div>
               </div>
             </div>
               <hr class="hr-line">
@@ -62,11 +60,9 @@
                   <div class="col"><p>{{main.currently.precipProbability * 100  | number : 0 }} %</p><p class="text-center">Precipitation</p></div>
                   <div class="col"><p>{{main.currently.windSpeed | number: 0}} MPH</p><p class="text-center">Wind Speed</p></div>                
                 
-                </div>
-            </div>                  
+                </div>                  
           </div>
-        </ion-content>
-        </ion-slide>
+          </ion-slide>
 
         <ion-slide>
         <ion-content overflow-scroll="true" class="has-header">

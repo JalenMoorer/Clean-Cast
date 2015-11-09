@@ -1,6 +1,14 @@
 angular.module('mainCtrl', ['ionic', 'ngCordova'])
 
-.controller('mainController', function (Geolocation, Weather, $ionicSlideBoxDelegate, $ionicScrollDelegate, $localstorage, $interval, $scope){
+.run(function($ionicPlatform) {
+  $ionicPlatform.ready(function() {
+    setTimeout(function() {
+        navigator.splashscreen.hide();
+    }, 100);
+ });
+})
+
+.controller('mainController', function (Geolocation, Weather, $ionicSlideBoxDelegate, $ionicScrollDelegate, $localstorage, $interval, $ionicPopup){
 
     var self = this;
     self.processing = true;
@@ -17,6 +25,19 @@ angular.module('mainCtrl', ['ionic', 'ngCordova'])
         $ionicSlideBoxDelegate.slide(index);
     };
 
+    self.showAlert = function() {
+        var time = new Date(self.alerts.time * 1000);
+        var expires = new Date(self.alerts.expires * 1000);
+       var alertPopup = $ionicPopup.alert({
+            title: self.alerts.title,
+            subTitle: "From: " + time + " To: " + expires,
+            template: self.alerts.description
+        });
+        alertPopup.then(function(res) {
+            console.log('Alert Closed');
+       });
+    };
+
     function getCoordinates() {
         Geolocation.getCoordinates().then(function(position){
             self.coordinates = {lat: position.coords.latitude, long: position.coords.longitude};
@@ -30,11 +51,16 @@ angular.module('mainCtrl', ['ionic', 'ngCordova'])
             var hourly = data.hourly.data;
             self.daily = data.daily.data;
 
+            self.alerts = {};
+
             hourly = convertHour(hourly);
             self.daily = convertTime(self.daily);    
             self.hourly = hourly.splice(1,7);
+            console.log(data);
 
-            console.log(self.currently);
+            if (typeof data.alerts != "undefined") {
+                self.alerts = data.alerts;
+            }
         
             getLocation(lat, long);
         });

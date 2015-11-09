@@ -17,9 +17,6 @@ angular.module('app', ['ionic', 'mainCtrl', 'geolocationService', 'weatherServic
     if(window.cordova && window.cordova.plugins.Keyboard) {
       cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
     }
-    if(window.navigator && window.navigator.splashscreen) {
-      window.plugins.orientationLock.unlock();
-    }
     if(window.StatusBar) {
       StatusBar.styleDefault();
     }
