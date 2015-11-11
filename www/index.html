@@ -27,9 +27,9 @@
   <body ng-app="app" ng-controller="mainController as main" ng-cloak>
 
   <div ng-if="main.processing">
-    <ion-content class="loading-screen">
-      <ion-spinner icon="lines" class="absolute-center"></ion-spinner>
-      <h1 class="absolute-center text-center">Loading App...</h1>
+    <ion-content class="loading-screen"  >
+      <ion-spinner icon="android" class="absolute-center"></ion-spinner>
+      <h1 class="absolute-center text-loading text-center">Loading App...</h1>
     </ion-content>
   </div>
     
@@ -66,7 +66,7 @@
 
         <ion-slide>
         <ion-content overflow-scroll="true" class="has-header">
-          <ion-item  class="card card-font" item-height="200" item-width="100%" collection-repeat="hourly in main.hourly">
+          <ion-item  class="card card-font item-text-wrap" item-height="200" item-width="100%" collection-repeat="hourly in main.hourly">
             <div class="row " >
                 <div class="col col-50">
                   <p class="padding-vertical card-font"><i ng-class="' wi wi-forecast-io-' + hourly.icon"></i> {{hourly.summary}}</p>
