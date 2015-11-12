@@ -1,6 +1,6 @@
 angular.module('weatherService', ['ngCordova'])
 
-.factory('Weather', function ($http, $q, FORECASTIO_KEY) {
+.factory('Weather', function ($http, $q) {
 
 	var url = 'http://jalenscript.com/api/fetch/';
 

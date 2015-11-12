@@ -41,8 +41,8 @@ angular.module('mainCtrl', ['ionic', 'ngCordova'])
     function getCoordinates() {
         Geolocation.getCoordinates().then(function(position){
             self.coordinates = {lat: position.coords.latitude, long: position.coords.longitude};
-            console.log( Math.floor(self.coordinates.lat* 10000) / 10000 );
-            console.log( Math.floor(self.coordinates.long * 10000) / 10000 );
+            console.log( Math.floor(self.coordinates.lat* 10) / 10 );
+            console.log( Math.floor(self.coordinates.long * 10) / 10 );
             getWeather(self.coordinates.lat, self.coordinates.long);
         });
     }
@@ -111,5 +111,5 @@ angular.module('mainCtrl', ['ionic', 'ngCordova'])
     init();
 
     /* Time in Milliseconds 60*60*1000* 3600000*/
-    $interval(init, 60000);
+    $interval(init, 1800000);
 });

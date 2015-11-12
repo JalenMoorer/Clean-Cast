@@ -3,11 +3,14 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <meta http-equiv="Content-Security-Policy" content="default-src *; style-src 'self' 'unsafe-inline'; script-src * 'unsafe-inline' 'unsafe-eval'">
+
+
     <title></title>
 
 
     <!-- compiled css output -->
-    <link href="assets/css/ionic.app.css" rel="stylesheet">
+    <link href="assets/css/ionic.app.min.css" rel="stylesheet">
 
     <!-- ionic/angularjs js -->
     <script src="assets/lib/ionic/js/ionic.bundle.js"></script>
@@ -43,15 +46,26 @@
 
         <ion-slide>
             <div class="padding currently-data">
-              <div class="absolute-center">
-                <div><h3 class="summary-temp"><i ng-class="' wi wi-forecast-io-' + main.currently.icon"></i> {{main.currently.summary}}</h3></div>
-                <div><h1 class="main-temp">{{main.currently.temperature | number:0}}&deg</h1></div>
+              <div class="absolute-center-content">
+                <div class="row">
+                  <div class="col">
+                    <h3 class="summary-temp"><i ng-class="' wi wi-forecast-io-' + main.currently.icon"></i> {{main.currently.summary}}</h3>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-50">
+                    <h1 class="main-temp text-right">{{main.currently.temperature | number: 0 }}&deg</h1>
+                  </div>
+                  <div class="col-50">
+                    <h1 class="main-temp text-left">/{{(main.currently.temperature - 32) * 5/9 | number:0}}&deg</h1>
+                  </div>
+                </div>
               </div>
             </div>
               <hr class="hr-line">
-            <div class="padding current-weather-info">
+            <div class="padding relative current-weather-info">
                 <div class="padding-vertical row">
-                  <div class="col"><p>{{main.currently.temperature | number: 0 }} &deg</p><p class="text-center">Feels Like</p></div>
+                  <div class="col"><p>{{main.currently.temperature | number: 0 }}&deg / {{(main.currently.temperature - 32) * 5/9 | number:0}}&deg</p><p class="text-center">Feels Like</p></div>
                   <div class="col"><p>{{main.currently.humidity * 100 | number: 0}} %</p><p class="text-center">Humidity</p></div>
                   <div class="col"><p>{{main.currently.visibility}} MPH</p><p class="text-center">Visibility</p></div>
                 </div>

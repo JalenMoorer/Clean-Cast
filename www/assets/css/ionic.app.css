@@ -34,16 +34,22 @@ $dark:                            #444 !default;
 .text-loading {
   color: #5D5858; }
 
+.text-left {
+  text-align: left; }
+
 .text-center {
   text-align: center !important; }
 
 .text-right {
   text-align: right; }
 
+.smaller-temp {
+  font-size: 17vw; }
+
 .currently-data {
   margin: 0px auto;
   text-align: center;
-  height: 62%; }
+  height: 60vh; }
 
 .iso-option {
   height: 30px;
@@ -70,9 +76,9 @@ $dark:                            #444 !default;
 .current-weather-info {
   margin: 0px auto;
   text-align: center;
-  height: 38%;
   font-weight: 600;
-  font-family: 'Arial Narrow', Arial, sans-serif; }
+  font-family: 'Arial Narrow', Arial, sans-serif;
+  font-size: 4vw; }
 
 .main-card {
   position: absolute;
@@ -95,6 +101,15 @@ $dark:                            #444 !default;
   top: 45%;
   margin-left: -150px;
   margin-top: -150px; }
+
+.absolute-center-content {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 50%;
+  top: 45%;
+  margin-left: -50%;
+  margin-top: -50%; }
 
 .summary-temp {
   font-size: 96px;
